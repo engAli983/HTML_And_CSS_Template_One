@@ -1,6 +1,6 @@
 # Leon | Creative Agency Template (Modernized)
 
-![Leon Banner](https://via.placeholder.com/1000x300/10cab7/ffffff?text=Leon+Creative+Agency+2025)
+![Leon Banner](https://placehold.co/1000x300/10cab7/ffffff?text=Leon+Creative+Agency+2025)
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=github)](https://engali983.github.io/HTML_And_CSS_Template_One/)
 [![Tech Stack](https://img.shields.io/badge/HTML5-CSS3-blue?style=for-the-badge)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
