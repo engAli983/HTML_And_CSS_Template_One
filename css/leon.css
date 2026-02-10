@@ -1,10 +1,10 @@
 /* Start Variables */
 :root {
-  --main-color: #10cab7;
-  --second-color:#2c4755;
+  --main-color: #2196f3;
+  --second-color: #1a2a3a;
+  --section-background: #f1f5f9;
   --third-color: #777;
-  --section-padding:70px;
-  --section-background:#f6f6f6;
+  --section-padding: 60px;
 }
 /* End Variables */
 /* Start Global Rules */
@@ -17,7 +17,15 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  font-family: "Work Sana", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  background-color: white;
+}
+h1,
+h2,
+h3,
+.special-heading {
+  font-family: "Poppins", sans-serif;
+  letter-spacing: -1px;
 }
 .container {
   padding-left: 15px;
@@ -58,9 +66,9 @@ body {
   margin: -30px 0 0;
   text-align: center;
   color: #797979;
-  font-size: 20px;  
+  font-size: 20px;
 }
-@media (max-width:767px) {
+@media (max-width: 767px) {
   .special-heading {
     font-size: 50px;
   }
@@ -68,48 +76,100 @@ body {
     margin-top: -20px;
   }
 }
+
+.hidden-el {
+  opacity: 20%;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+  filter: blur(1px);
+}
+.show-el {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+@media (prefers-reduced-motion) {
+  .hidden-el {
+    transition: none;
+  }
+}
+
+.feat,
+.srv,
+.card {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+.feat:hover,
+.srv:hover,
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
 /* End Components */
 
 /* Start Header */
 .header {
   padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.1); /* شفافية */
+  backdrop-filter: blur(15px); /* تأثير الزغللة */
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
-.header .container { 
+.header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.header .container .logo { /*دي الصوره بتاعة اللوجو*/
+.header .container .logo {
+  /*دي الصوره بتاعة اللوجو*/
   width: 60px;
 }
-.header .links { /*الاب امحتوي علي اللينكات */
+.header .links {
+  /*الاب امحتوي علي اللينكات */
   position: relative;
 }
-.header .links .icon { /*دي الاب بتاع التلات شرطات بتاعة ايظهر اللينك*/
+.header .links .icon {
+  /*دي الاب بتاع التلات شرطات بتاعة ايظهر اللينك*/
   width: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
+  cursor: pointer;
 }
-.header .links .icon:hover span:nth-child(2) { /*لما نقف علي التلات شرطات اللي في النص تكبر*/
+.header .links .icon:hover span:nth-child(2) {
+  /*لما نقف علي التلات شرطات اللي في النص تكبر*/
   width: 100%;
 }
-.header .links .icon span { /*كل شرطه لوحدها*/
+.header .links .icon span {
+  /*كل شرطه لوحدها*/
   background-color: var(--third-color);
   margin-bottom: 5px;
   height: 2px;
 }
-.header .links .icon span:first-child { /*الاولي*/
+.header .links .icon span:first-child {
+  /*الاولي*/
   width: 100%;
 }
-.header .links .icon span:nth-child(2) { /*التانية*/
+.header .links .icon span:nth-child(2) {
+  /*التانية*/
   width: 60%;
-  transition: .3s;
+  transition: 0.3s;
 }
-.header .links .icon span:last-child { /*التالته*/
+.header .links .icon span:last-child {
+  /*التالته*/
   width: 100%;
 }
-.header .links ul { 
+.header .links ul {
   margin: 0;
   padding: 0;
   background-color: var(--section-background);
@@ -120,10 +180,11 @@ body {
   display: none;
   z-index: 1;
 }
-.header .links:hover ul {/*لما نقف عل التلات شرطات تظهر حاوية اللينكات*/
+/* .header .links:hover ul {
   display: block;
-}
-.header .links ul::before { /*عشان نعمل سهم للنكات*/
+} */
+.header .links ul::before {
+  /*عشان نعمل سهم للنكات*/
   content: "";
   border: 10px;
   border-style: solid;
@@ -132,15 +193,16 @@ body {
   right: 5px;
   top: -20px;
 }
-.header .links ul li { 
+.header .links ul li {
   list-style-type: none;
 }
-.header .links ul li a { /*اللينكات نفسها*/
+.header .links ul li a {
+  /*اللينكات نفسها*/
   text-decoration: none;
   display: block;
   padding: 15px;
   color: var(--third-color);
-  transition: .3s;
+  transition: 0.3s;
 }
 .header .links ul li a:hover {
   padding-left: 25px;
@@ -156,6 +218,21 @@ body {
   background-size: cover;
   height: calc(100vh - 64px);
   position: relative;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 0% 100%);
+}
+.landing::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(111 111 111 / 30%),
+    rgba(0, 0, 0, 0.7)
+  );
+  z-index: 1;
 }
 .landing .intro-tex {
   position: absolute;
@@ -166,6 +243,7 @@ body {
   text-align: center;
   width: 320px;
   max-width: 100%;
+  z-index: 2;
 }
 .landing .intro-tex h1 {
   margin: 0;
@@ -179,9 +257,24 @@ body {
   font-size: 50px;
   color: var(--main-color);
 }
-.landing .intro-tex p {
+/* .landing .intro-tex p {
   font-size: 19px;
   line-height: 1.8;
+} */
+.landing .intro-tex #typewriter-text {
+  border-right: 2px solid var(--main-color);
+  padding-right: 5px;
+  font-size: 20px;
+  animation: blink-caret 0.75s step-end infinite;
+}
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--main-color);
+  }
 }
 
 /* End Landing Section*/
@@ -194,7 +287,7 @@ body {
 }
 .features .container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
 }
 .features .feat {
@@ -204,7 +297,7 @@ body {
 .features .feat i {
   color: var(--main-color);
 }
-.features .feat h3{
+.features .feat h3 {
   font-weight: 700;
   margin: 30px 0;
 }
@@ -222,15 +315,17 @@ body {
 }
 .services .services-content {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   margin-top: 100px;
 }
 .services .services-content .srv {
   display: flex;
   margin-bottom: 40px;
+  padding: 12px;
 }
-@media(max-width: 767px) { /*ده عشان نعمل الصور تحت بعض والنص يبقي في النص*/
+@media (max-width: 767px) {
+  /*ده عشان نعمل الصور تحت بعض والنص يبقي في النص*/
   .services .services-content .srv {
     flex-direction: column;
     text-align: center;
@@ -271,7 +366,8 @@ body {
   right: -90px;
   z-index: -1;
 }
-@media (max-width: 1199px) { /*ده عشان نلفي الصورة خالص*/
+@media (max-width: 1199px) {
+  /*ده عشان نلفي الصورة خالص*/
   .image-column {
     display: none;
   }
@@ -279,36 +375,68 @@ body {
 
 /* End Services */
 
-/* Start Protfolio */
-.protfolio {
+/* Start portfolio */
+.portfolio {
   padding-top: var(--section-padding);
   padding-bottom: var(--section-padding);
   background-color: var(--section-background);
 }
-.protfolio .protfolio-content {
+.portfolio .shuffle {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 37px 0 0px;
+  margin: 0 0 -57px;
+}
+.portfolio .shuffle li {
+  padding: 10px 20px;
+  background-color: white;
+  color: var(--main-color);
+  cursor: pointer;
+  border: 1px solid var(--main-color);
+  margin-left: 10px;
+  transition: 0.3s;
+  font-weight: bold;
+}
+@media (max-width: 767px) {
+  .portfolio .shuffle li {
+    font-size: 10px;
+    padding: 6px 12px;
+  }
+}
+.portfolio .shuffle li.active,
+.portfolio .shuffle li:hover {
+  background-color: var(--main-color);
+  color: white;
+}
+.portfolio .portfolio-content {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 30px;
   margin-top: 100px;
 }
-.protfolio .protfolio-content .card {
+.portfolio .portfolio-content .card {
   background-color: white;
 }
-.protfolio .protfolio-content .card img {
+.portfolio .portfolio-content .card img {
   max-width: 100%;
+  transition: 0.3s;
 }
-.protfolio .protfolio-content .card .info {
+.portfolio-content .card:hover img {
+  transform: scale(1.05);
+}
+.portfolio .portfolio-content .card .info {
   padding: 20px;
 }
-.protfolio .protfolio-content .card .info h3 {
+.portfolio .portfolio-content .card .info h3 {
   margin: 0;
 }
-.protfolio .protfolio-content .card .info p {
+.portfolio .portfolio-content .card .info p {
   color: var(--third-color);
   line-height: 1.6;
   margin-bottom: 0;
 }
-/* End Protfolio */
+/* End portfolio */
 
 /* Start About */
 .about {
@@ -321,7 +449,8 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-@media (max-width:991px) { /*هنا عشان لما يجي عند شاشه اكبرحجم فيها 991 يعمل كده في النص*/
+@media (max-width: 991px) {
+  /*هنا عشان لما يجي عند شاشه اكبرحجم فيها 991 يعمل كده في النص*/
   .about .about-content {
     flex-direction: column;
     text-align: center;
@@ -332,7 +461,8 @@ body {
   height: 375px;
   position: relative;
 }
-@media (max-width: 991px) { /*ده عشان نوسط الصورة في النص */
+@media (max-width: 991px) {
+  /*ده عشان نوسط الصورة في النص */
   .about .about-content .image {
     margin: 0px auto 60px;
   }
@@ -345,7 +475,7 @@ body {
   background: #ebebeb;
   top: -40px;
   left: -30px;
-  z-index: -1
+  z-index: -1;
 }
 .about .about-content .image::after {
   content: "";
@@ -358,7 +488,8 @@ body {
   top: -40px;
   right: -150px;
 }
-@media (max-width: 991px) { /* هنا نلغي اي رسمه*/
+@media (max-width: 991px) {
+  /* هنا نلغي اي رسمه*/
   .about .about-content .image::before,
   .about .about-content .image::after {
     display: none;
@@ -420,7 +551,7 @@ body {
   color: var(--second-color);
   margin-left: 10px;
 }
-@media (max-width:767px) {
+@media (max-width: 767px) {
   .contact .info-text .label,
   .contact .info-text .link {
     font-size: 25px;
